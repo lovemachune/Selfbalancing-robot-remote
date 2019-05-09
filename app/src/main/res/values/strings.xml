@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">carRemote</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="y_value">Y : %1$.0f</string>
+    <string name="x_value">X : %1$.0f</string>
+    <string name="y_value_none">Y : 0</string>
+    <string name="x_value_none">X : 0</string>
+</resources>

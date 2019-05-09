@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context = ".MainActivity">
+
+    <com.jmedeisis.bugstick.Joystick
+        android:id="@+id/joystick_L"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/back"
+        app:force_square="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:motion_constraint="Horizontal"
+        app:start_on_first_touch="true">
+
+
+        <Button
+            android:id="@+id/button_L"
+            android:layout_width="69dp"
+            android:layout_height="68dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/circle" />
+        <!-- Any View here. -->
+    </com.jmedeisis.bugstick.Joystick>
+
+    <TextView
+        android:id="@+id/X_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/joystick_L"
+        android:layout_marginStart="228dp"
+        android:layout_marginBottom="36dp"
+        android:text="X: 0"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.jmedeisis.bugstick.Joystick
+        android:id="@+id/joystick_R"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="36dp"
+        android:layout_toRightOf="@id/joystick_L"
+        android:background="@drawable/back"
+        app:force_square="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:motion_constraint="Vertical"
+        app:start_on_first_touch="true">
+
+
+        <Button
+            android:id="@+id/button_R"
+            android:layout_width="69dp"
+            android:layout_height="68dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/circle" />
+        <!-- Any View here. -->
+    </com.jmedeisis.bugstick.Joystick>
+
+    <TextView
+        android:id="@+id/Y_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/joystick_R"
+        android:layout_marginEnd="228dp"
+        android:layout_marginBottom="36dp"
+        android:layout_toRightOf="@id/joystick_L"
+        android:text="Y: 0"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
