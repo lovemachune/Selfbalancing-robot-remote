@@ -101,5 +101,4 @@ public class MainActivity extends AppCompatActivity {
     {
         return connection.getmBluetoothConnection().read();
     }
-
 }
