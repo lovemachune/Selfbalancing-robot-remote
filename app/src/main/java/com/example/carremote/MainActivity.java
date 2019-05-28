@@ -100,5 +100,5 @@ public class MainActivity extends AppCompatActivity {
     public String btRendText()
     {
         return connection.getmBluetoothConnection().read();
-    }//test
+    }
 }
