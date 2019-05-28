@@ -171,17 +171,11 @@ public class setPID extends Fragment {
         });
         return view;
     }
-    boolean getSend()
-    {
-        return send_receive;
-    }
+    boolean getSend() { return send_receive; }
     void setSend(){send_receive = true;}
     TextView getPhi(){return phi;}
     TextView getSpeed(){return  speed;}
-    String getData()
-    {
-        return kp.getText()+" "+ki.getText()+" "+kd.getText()+" "+reference.getText();
-    }
+    String getData() { return kp.getText()+" "+ki.getText()+" "+kd.getText()+" "+reference.getText(); }
     void setData(double p, double i, double d, double r)
     {
         car_kp = p;
