@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                                 set_pid.getPhi().setText(data[0]);
                                 set_pid.getSpeed().setText(data[1]);
                                 set_pid.setSend();
+                                //test again
                             }
                         }
                 }
