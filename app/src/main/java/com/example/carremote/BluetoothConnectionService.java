@@ -126,7 +126,7 @@ public class BluetoothConnectionService {
             mmOutStream = tmpOut;
         }
 
-        public void run(){
+        public String run(String messenge){
             byte[] buffer = new byte[1024];  // buffer store for the stream
 
             int bytes; // bytes returned from read()
@@ -138,11 +138,13 @@ public class BluetoothConnectionService {
                     bytes = mmInStream.read(buffer);
                     String incomingMessage = new String(buffer, 0, bytes);
                     Log.d(TAG, "InputStream: " + incomingMessage);
+                    messenge = incomingMessage;
                 } catch (IOException e) {
                     Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage() );
                     break;
                 }
             }
+            return messenge;
         }
 
         //Call this from the main activity to send data to the remote device
@@ -181,5 +183,12 @@ public class BluetoothConnectionService {
         if(mConnectedThread!=null)
             mConnectedThread.write(bytes);
     }
-
+    public String read()
+    {
+        String messenge = "can't accept data";
+        Log.d(TAG, "write: Write Called.");
+        if(mConnectedThread!=null)
+            messenge =mConnectedThread.run(messenge);
+        return messenge;
+    }
 }

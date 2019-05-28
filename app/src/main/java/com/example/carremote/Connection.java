@@ -243,7 +243,7 @@ public class Connection extends Fragment implements AdapterView.OnItemClickListe
 
     public void btnDiscover() {
         Log.d(TAG, "btnDiscover: Looking for unpaired devices.");
-
+        mBTDevices.clear();
         if(mBluetoothAdapter.isDiscovering()){
             mBluetoothAdapter.cancelDiscovery();
             Log.d(TAG, "btnDiscover: Canceling discovery.");

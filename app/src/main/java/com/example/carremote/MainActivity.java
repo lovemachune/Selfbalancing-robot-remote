@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         control = new Control();
         connection = new Connection();
         set_pid = new setPID();
-
         timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -70,7 +70,17 @@ public class MainActivity extends AppCompatActivity {
                         }
                         if(type == 2)
                         {
-                            btSentText(set_pid.getData());
+                            if(set_pid.getSend())
+                                btSentText(set_pid.getData());
+                            else
+                            {
+                                String messenge = connection.getmBluetoothConnection().read();
+                                String data[] = messenge.split(",");
+                                set_pid.getPhi().setText(data[0]);
+                                set_pid.getSpeed().setText(data[1]);
+                                set_pid.setSend();
+                                //test github again
+                            }
                         }
                 }
             }
@@ -88,4 +98,9 @@ public class MainActivity extends AppCompatActivity {
     public void btSentText(String command) {
         connection.getmBluetoothConnection().write(command);
     }
+    public String btRendText()
+    {
+        return connection.getmBluetoothConnection().read();
+    }
+
 }
