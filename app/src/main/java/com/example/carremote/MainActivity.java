@@ -70,15 +70,19 @@ public class MainActivity extends AppCompatActivity {
                         }
                         if(type == 2)
                         {
-                            if(set_pid.getSend())
+                            if(set_pid.getSend()==true)
+                            {
                                 btSentText(set_pid.getData());
+                                set_pid.getPhi().setText("btn click");
+                                set_pid.getSpeed().setText("btn click");
+                                set_pid.setSend();
+                            }
                             else
                             {
                                 String messenge = connection.getmBluetoothConnection().read();
                                 String data[] = messenge.split(",");
                                 set_pid.getPhi().setText(data[0]);
                                 set_pid.getSpeed().setText(data[1]);
-                                set_pid.setSend();
                             }
                         }
                 }

@@ -16,7 +16,7 @@ public class setPID extends Fragment {
     private TextView kp,ki,kd,reference, phi, speed;
     private SeekBar seekBar_kp, seekBar_ki, seekBar_kd, seekBar_reference;
     private Button button_kpm, button_kpp, button_kim, button_kip, button_kdm, button_kdp, button_referencem, button_referencep,button_send;
-    private  boolean send_receive;
+    private  boolean send_receive = false;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -102,7 +102,7 @@ public class setPID extends Fragment {
         button_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                send_receive = false;
+                send_receive = true;
             }
         });
         seekBar_kp.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -172,7 +172,7 @@ public class setPID extends Fragment {
         return view;
     }
     boolean getSend() { return send_receive; }
-    void setSend(){send_receive = true;}
+    void setSend(){send_receive = false;}
     TextView getPhi(){return phi;}
     TextView getSpeed(){return  speed;}
     String getData() { return kp.getText()+" "+ki.getText()+" "+kd.getText()+" "+reference.getText(); }
