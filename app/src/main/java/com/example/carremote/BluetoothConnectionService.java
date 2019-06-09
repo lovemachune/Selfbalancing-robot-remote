@@ -7,8 +7,10 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.UUID;
@@ -135,12 +137,14 @@ public class BluetoothConnectionService {
             while (true) {
                 // Read from the InputStream
                 try {
-                    bytes = mmInStream.read(buffer);
-                    String incomingMessage = new String(buffer, 0, bytes);
-                    Log.d(TAG, "InputStream: " + incomingMessage);
-                    messenge = incomingMessage;
+                    BufferedReader r = new BufferedReader(new InputStreamReader(mmInStream));
+                    String line = r.readLine();
+                    Log.d(TAG, "line"+line);
+                    messenge = line;
+                    //Log.d(TAG, "InputStream: " + btAngle+","+pos[0]+","+pos[1]);
+                    break;
                 } catch (IOException e) {
-                    Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage() );
+                    Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage());
                     break;
                 }
             }
@@ -185,7 +189,7 @@ public class BluetoothConnectionService {
     }
     public String read()
     {
-        String messenge = "can't accept data";
+        String messenge = "n";
         Log.d(TAG, "write: Write Called.");
         if(mConnectedThread!=null)
             messenge =mConnectedThread.run(messenge);

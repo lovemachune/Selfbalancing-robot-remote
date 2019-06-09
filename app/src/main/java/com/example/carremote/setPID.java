@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
+//18 180 0.2
 public class setPID extends Fragment {
-    private double car_kp, car_ki, car_kd, car_ref;
+    private double car_kp=18, car_ki=180, car_kd=0.2, car_ref=0;
     private TextView kp,ki,kd,reference, phi, speed;
     private SeekBar seekBar_kp, seekBar_ki, seekBar_kd, seekBar_reference;
     private Button button_kpm, button_kpp, button_kim, button_kip, button_kdm, button_kdp, button_referencem, button_referencep,button_send;
@@ -140,7 +140,7 @@ public class setPID extends Fragment {
         seekBar_kd.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                kd.setText(""+ (car_kd+0.01*(progress-50)) + "");
+                kd.setText(""+ String.format("%.4s",car_kd+(progress-50)/100.) + "");
             }
 
             @Override
@@ -156,7 +156,7 @@ public class setPID extends Fragment {
         seekBar_reference.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                reference.setText("" +  (car_ref+0.01*(progress-50)) + "");
+                reference.setText("" +  (car_ref+(progress-50)/100.) + "");
             }
 
             @Override
@@ -175,7 +175,7 @@ public class setPID extends Fragment {
     void setSend(){send_receive = false;}
     TextView getPhi(){return phi;}
     TextView getSpeed(){return  speed;}
-    String getData() { return kp.getText()+" "+ki.getText()+" "+kd.getText()+" "+reference.getText(); }
+    String getData() { return kp.getText()+" "+ki.getText()+" "+kd.getText()+" "+reference.getText()+"\n"; }
     void setData(double p, double i, double d, double r)
     {
         car_kp = p;

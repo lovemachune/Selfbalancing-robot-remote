@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment selectFragment = null;
     private Control control;
     private Connection connection;
+    private String data;
     private  setPID set_pid;
     private Timer timer;
     private TimerTask timerTask;
@@ -63,10 +64,22 @@ public class MainActivity extends AppCompatActivity {
                         if(type == 1)
                         {
                             String motor_R, motor_L;
+                            String messenge = connection.getmBluetoothConnection().read();
                             int [] joyValue = control.getJoy_value();
+                            if(joyValue[0]>100 || joyValue[0]<-100)
+                                joyValue[0] = 0;
+                            if(joyValue[1]>100 || joyValue[1]<-100)
+                                joyValue[1] = 0;
                             motor_L = Integer.toString(joyValue[1]);
                             motor_R = Integer.toString(joyValue[0]);
-                            btSentText(motor_L+','+motor_R);
+                            btSentText(motor_L+' '+motor_R+"\n");
+                            try
+                            {
+                                Thread.sleep(1500);
+                                Log.d(TAG,"sleep call");
+                            }catch (InterruptedException e) {
+
+                            }
                         }
                         if(type == 2)
                         {
@@ -80,9 +93,19 @@ public class MainActivity extends AppCompatActivity {
                             else
                             {
                                 String messenge = connection.getmBluetoothConnection().read();
-                                String data[] = messenge.split(",");
-                                set_pid.getPhi().setText(data[0]);
-                                set_pid.getSpeed().setText(data[1]);
+                                int size = messenge.length();
+                                if(size!=0)
+                                {
+                                    data = messenge;
+                                    Log.d(TAG,"messenge:"+data);
+                                    String data[] = messenge.split(",");
+                                    if(data.length>=2)
+                                    {
+                                        set_pid.getPhi().setText(data[0]);
+                                        set_pid.getSpeed().setText(data[1]);
+                                    }
+
+                                }
                             }
                         }
                 }
@@ -101,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     public void btSentText(String command) {
         connection.getmBluetoothConnection().write(command);
     }
-    public String btRendText()
+    public String btReadText()
     {
         return connection.getmBluetoothConnection().read();
     }
