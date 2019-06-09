@@ -1,3 +1,4 @@
 # carRemote
 use android phone
-control balantBOt
+
+control Self-balancing robot
