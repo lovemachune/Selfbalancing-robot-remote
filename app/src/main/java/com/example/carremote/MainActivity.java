@@ -72,10 +72,10 @@ public class MainActivity extends AppCompatActivity {
                                 joyValue[1] = 0;
                             motor_L = Integer.toString(joyValue[1]);
                             motor_R = Integer.toString(joyValue[0]);
-                            btSentText(motor_L+' '+motor_R+"\n");
+                            btSentText(motor_L+' '+motor_R);
                             try
                             {
-                                Thread.sleep(1500);
+                                Thread.sleep(10);//send speed
                                 Log.d(TAG,"sleep call");
                             }catch (InterruptedException e) {
 
